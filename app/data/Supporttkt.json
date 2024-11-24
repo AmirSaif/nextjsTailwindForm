@@ -1,0 +1,1625 @@
+{
+  "__collections__": {
+    "Versions": {
+      "undefined": {
+        "activeStatusProgression": "",
+        "ruleGroups": [
+          {
+            "rules": [
+              {
+                "comparator": "!=",
+                "question": "status",
+                "value": "Draft"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "email",
+                "targetType": "template.email.html",
+                "value": "{subject: 'SUBMISSION: ' + request.title + ' - has been submitted for review.',header: 'Submission Received!', message: 'Your I2I Support Ticket has been received and will be reviewed soon. You can monitor the status of your I2I Support Ticket at any time by following the link below', requestId: request.requestId, links: [{link: '%scriptUrl%?action=loadRequest&rid=' + request.rid, text: 'Status Check'}],images: [{name: 'logoBlob',key:'logo',url:'https://www.vippng.com/png/detail/1-13363_check-mark-png-icon-green-circle-check-mark.png'}]}",
+                "target": "@submitterEmail,@requestorEmail,@primaryContact"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "!=",
+                "question": "status",
+                "value": "Draft"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "chat",
+                "targetType": "spaces/AAAA52i73Iw",
+                "value": "{text:'I2I Support Ticket Request: ' + request.title + ' - has been submitted for review. <%scriptUrl%?action=loadRequest&rid=' + request.rid + '|View Request>'}",
+                "target": "spaces/AAAA52i73Iw"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "!=",
+                "question": "status",
+                "value": "Draft"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "email",
+                "targetType": "template.email.html",
+                "value": "{subject: 'I2I Support Ticket Request: ' + request.title + ' - has been submitted.',header: 'Please review the engagement request',message: 'The following engagement has been submitted for review.',options: [],request: legacyRequest,links: [{link: '%scriptUrl%?action=loadRequest&rid=' + request.rid,text: 'Status Check'}],images: [{name: 'logoBlob',key:'logo',url:'http://www.nlpitaly.it/wp-content/uploads/2018/01/domanda.png'}]}",
+                "target": "i2isupport@globalpay.com"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Disconnect from Rally"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": true,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": true,
+                "target": "rallyarchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "!=",
+                "question": "typeOfSupportTicket",
+                "value": "Disconnect from Rally"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "rallyarchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Disconnect from Changepoint"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": true,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": true,
+                "target": "cparchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "!=",
+                "question": "typeOfSupportTicket",
+                "value": "Disconnect from Changepoint"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "cparchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Update Claims"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "rallyarchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Chat/Email Notification"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "rallyarchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Cancel Request"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": true,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "rallyarchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Drive issue"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": true,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "rallyarchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Updates in Request ID"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": true,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "rallyarchived"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "comparator": "=",
+                "question": "typeOfSupportTicket",
+                "value": "Others"
+              }
+            ],
+            "actions": [
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": false,
+                "target": "requestId"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "hidden",
+                "value": true,
+                "target": "rallyarchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "cparchived"
+              },
+              {
+                "verb": "update",
+                "targetType": "required",
+                "value": false,
+                "target": "rallyarchived"
+              }
+            ]
+          }
+        ],
+        "tooltipText": "Support Ticket Engagement is an engagement for End-Users that needs to raise any support queries related for their existing requests.",
+        "canHaveParents": false,
+        "icon": "handshake-alt",
+        "canStandalone": true,
+        "firestorePath": "RequestTemplates/1681896056",
+        "responsibleImpact": "I2I Support",
+        "title": "Support Ticket",
+        "type": "Engagement",
+        "delete": true,
+        "sections": [
+          {
+            "hidden": false,
+            "max": 200,
+            "background": 1,
+            "inputs": [
+              {
+                "hidden": false,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "",
+                "icon": "",
+                "label": "Type Of Ticket",
+                "error": "Type Of Ticket is required.",
+                "type": "dropdown",
+                "required": true,
+                "showOnStatus": "Draft",
+                "identity": "typeOfSupportTicket",
+                "limit": 0,
+                "options": [
+                  {
+                    "icon": "object-group",
+                    "label": "Disconnect from Rally",
+                    "type": "option",
+                    "value": "Disconnect from Rally"
+                  },
+                  {
+                    "icon": "object-group",
+                    "label": "Disconnect from Changepoint",
+                    "type": "option",
+                    "value": "Disconnect from Changepoint"
+                  },
+                  {
+                    "icon": "object-group",
+                    "label": "Update Claims",
+                    "type": "option",
+                    "value": "Update Claims"
+                  },
+                  {
+                    "icon": "object-group",
+                    "label": "Chat/Email Notification",
+                    "type": "option",
+                    "value": "Chat/Email Notification"
+                  },
+                  {
+                    "icon": "object-group",
+                    "label": "Cancel Request",
+                    "type": "option",
+                    "value": "Cancel Request"
+                  },
+                  {
+                    "icon": "object-group",
+                    "label": "Drive issue",
+                    "type": "option",
+                    "value": "Drive issue"
+                  },
+                  {
+                    "icon": "object-group",
+                    "label": "Updates in Request ID",
+                    "type": "option",
+                    "value": "Updates in Request ID"
+                  },
+                  {
+                    "icon": "object-group",
+                    "label": "Others",
+                    "type": "option",
+                    "value": "Others"
+                  }
+                ],
+                "id": 1,
+                "text": "Please select the specific category of the Support Ticket being raised.",
+                "value": ""
+              },
+              {
+                "hidden": true,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "Please provide a valid Request ID",
+                "icon": "paragraph",
+                "label": "Request ID",
+                "type": "text",
+                "required": "",
+                "showOnStatus": "Draft",
+                "identity": "requestId",
+                "options": [],
+                "limit": 10,
+                "id": 2,
+                "text": "Please provide existing Request ID (RID), for multiple RIDs, separate the RIDs with a comma while creating a support ticket.",
+                "value": ""
+              },
+              {
+                "hidden": true,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "",
+                "icon": "paragraph",
+                "label": "Is this Project archived at ChangePoint?",
+                "type": "checkinputbox",
+                "required": false,
+                "showOnStatus": "Draft",
+                "identity": "cparchived",
+                "options": [],
+                "limit": 10,
+                "id": 3,
+                "text": "Ticket raised to disconnect Request ID from ChangePoint.",
+                "value": ""
+              },
+              {
+                "hidden": true,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "",
+                "icon": "paragraph",
+                "label": "Is this Project archived at Rally?",
+                "type": "checkinputbox",
+                "required": false,
+                "showOnStatus": "Draft",
+                "identity": "rallyarchived",
+                "options": [],
+                "limit": 10,
+                "id": 4,
+                "text": "Ticket raised to disconnect Request ID from Rally.",
+                "value": ""
+              },
+              {
+                "hidden": false,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "Please enter a summary for your engagement request.",
+                "icon": "paragraph",
+                "label": "Summary",
+                "type": "richText",
+                "required": true,
+                "showOnStatus": "Draft",
+                "identity": "summary",
+                "options": [],
+                "limit": 10000,
+                "id": 3,
+                "text": "Please provide description of why this Ticket is being created.",
+                "value": "",
+                "responsesField": "summaryRichtext"
+              }
+            ],
+            "label": "Details",
+            "published": true
+          },
+          {
+            "hidden": false,
+            "max": 200,
+            "background": 3,
+            "inputs": [
+              {
+                "hidden": false,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "",
+                "icon": "paragraph",
+                "label": "Primary Contacts",
+                "type": "contact",
+                "required": true,
+                "valid": true,
+                "showOnStatus": "Draft",
+                "identity": "pointOfContact",
+                "options": [],
+                "limit": 200,
+                "id": 4,
+                "text": "Provide the name of a contact (in addition to the requestor) that must be notified regarding this request.",
+                "value": ""
+              },
+              {
+                "hidden": false,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "",
+                "icon": "paragraph",
+                "label": "Secondary Contacts",
+                "type": "contact",
+                "required": false,
+                "valid": true,
+                "showOnStatus": "Draft",
+                "identity": "secondaryPointOfContact",
+                "options": [],
+                "limit": 200,
+                "id": 5,
+                "text": "Provide the name of additional contacts that should be notified regarding this request.",
+                "value": ""
+              }
+            ],
+            "label": "Contacts",
+            "published": true
+          },
+          {
+            "hidden": false,
+            "max": 200,
+            "background": 7,
+            "inputs": [
+              {
+                "hidden": false,
+                "tooltipText": "",
+                "collapsed": true,
+                "errorMessage": "",
+                "icon": "folder",
+                "label": "",
+                "type": "upload",
+                "required": false,
+                "showOnStatus": "Draft",
+                "identity": "uploads",
+                "options": [],
+                "limit": 0,
+                "id": 6,
+                "text": "",
+                "value": "value"
+              }
+            ],
+            "label": "Uploads",
+            "published": true
+          }
+        ],
+        "subtype": "Support Ticket",
+        "iconColor": "7AB793",
+        "canHaveChildren": false,
+        "id": "1681896056",
+        "statusProgression": [
+          {
+            "visible": false,
+            "label": "Draft",
+            "value": 0
+          },
+          {
+            "visible": true,
+            "label": "New",
+            "value": 1
+          },
+          {
+            "visible": true,
+            "label": "Defined",
+            "value": 2
+          },
+          {
+            "visible": true,
+            "label": "In-Progress",
+            "value": 3
+          },
+          {
+            "visible": true,
+            "label": "Completed",
+            "value": 4
+          },
+          {
+            "visible": true,
+            "label": "Accepted",
+            "value": 5
+          },
+          {
+            "visible": true,
+            "label": "Released",
+            "value": 6
+          }
+        ],
+        "__collections__": {}
+      }
+    },
+    "connectors": {
+      "rally": {
+        "prerequisites": [],
+        "connectionMaps": {
+          "create": {
+            "resourceUrl": "CreateResult.Object._ref",
+            "percentComplete": 0,
+            "errors": "CreateResult.Errors",
+            "objectId": "CreateResult.Object.ObjectID",
+            "referenceId": "CreateResult.Object.FormattedID",
+            "referenceUrl": "https://rally1.rallydev.com/#/?detail=/ + CreateResult.Object._type + / + CreateResult.Object.ObjectID + &fdp=true",
+            "status": "CreateResult.Object.ScheduleState"
+          },
+          "update": {
+            "status": "UpdateResult.Object.ScheduleState"
+          }
+        },
+        "name": "Rally",
+        "template": {
+          "endpoint": "https://rally1.rallydev.com/slm/webservice/v2.0/hierarchicalrequirement/create",
+          "variables": [
+            {
+              "name": "rid",
+              "location": "request"
+            },
+            {
+              "name": "title",
+              "location": "request"
+            },
+            {
+              "name": "summary",
+              "location": "request.responses"
+            }
+          ],
+          "children": [
+            {
+              "isConnectionSource": false,
+              "variables": [],
+              "endpoint": "https://rally1.rallydev.com/slm/webservice/v2.0/portfolioitem/feature/create",
+              "children": [
+                {
+                  "isConnectionSource": true,
+                  "variables": [],
+                  "endpoint": "https://rally1.rallydev.com/slm/webservice/v2.0/hierarchicalrequirement/create",
+                  "children": [],
+                  "payload": {
+                    "HierarchicalRequirement": {
+                      "c_I2IConnectionId": "%%id%%",
+                      "PortfolioItem": "https://rally1.rallydev.com/slm/webservice/v2.0/portfolioitem/feature/700128194445",
+                      "c_I2IRequestId": "%%rid%%",
+                      "Project": "https://rally1.rallydev.com/slm/webservice/v2.0/project/437515997252",
+                      "Owner": "",
+                      "Description": "%%summary%%",
+                      "PlanEstimate": "1",
+                      "ScheduleState": "Defined",
+                      "Name": "%%title%%"
+                    }
+                  }
+                }
+              ],
+              "payload": {
+                "Feature": {
+                  "c_I2IConnectionId": "%%id%%",
+                  "Project": "https://rally1.rallydev.com/slm/webservice/v2.0/project/249205427576",
+                  "c_I2IRequestId": "%%rid%%",
+                  "Owner": "",
+                  "Description": "Test",
+                  "Parent": "https://rally1.rallydev.com/slm/webservice/v2.0/portfolioitem/capability/%%objectId%%",
+                  "PreliminaryEstimate": "",
+                  "Name": "GCP - %%landingZoneCode%% LZ"
+                }
+              }
+            }
+          ],
+          "payload": {
+            "USERSTORY": {
+              "c_I2IConnectionID": "%%id%%",
+              "Project": "https://rally1.rallydev.com/slm/webservice/v2.0/project/437515997252",
+              "c_I2IRequestId": "%%rid%%",
+              "Owner": "https://rally1.rallydev.com/slm/webservice/v2.0/user/697555431937",
+              "PreliminaryEstimate": "",
+              "ScheduleState": "New",
+              "Parent": "",
+              "Description": "%%summary%%",
+              "Name": "%%title%%",
+              "PortfolioItem": "https://rally1.rallydev.com/slm/webservice/v2.0/portfolioitem/feature/700128194445"
+            }
+          }
+        },
+        "__collections__": {}
+      }
+    }
+  },
+  "tooltipText": "Support Ticket Engagement is an engagement for End-Users that needs to raise any support queries related for their existing requests.",
+  "canHaveParents": false,
+  "icon": "handshake-alt",
+  "canStandalone": true,
+  "firestorePath": "RequestTemplates/1681896056",
+  "type": "Engagement",
+  "iconColor": "7AB793",
+  "canHaveChildren": false,
+  "subtype": "Support Ticket",
+  "title": "Support Ticket",
+  "delete": true,
+  "responsibleImpact": "I2I Support",
+  "activeStatusProgression": "",
+  "statusProgression": [
+    {
+      "visible": false,
+      "label": "Draft",
+      "value": 0
+    },
+    {
+      "visible": true,
+      "label": "New",
+      "value": 1
+    },
+    {
+      "visible": true,
+      "label": "Defined",
+      "value": 2
+    },
+    {
+      "visible": true,
+      "label": "In-Progress",
+      "value": 3
+    },
+    {
+      "visible": true,
+      "label": "Completed",
+      "value": 4
+    },
+    {
+      "visible": true,
+      "label": "Accepted",
+      "value": 5
+    },
+    {
+      "visible": true,
+      "label": "Released",
+      "value": 6
+    }
+  ],
+  "id": "1681896056",
+  "ruleGroups": [
+    {
+      "rules": [
+        {
+          "comparator": "!=",
+          "question": "status",
+          "value": "Draft"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "email",
+          "targetType": "template.email.html",
+          "value": "{subject: 'SUBMISSION: ' + request.title + ' - has been submitted for review.',header: 'Submission Received!', message: 'Your I2I Support Ticket has been received and will be reviewed soon. You can monitor the status of your I2I Support Ticket at any time by following the link below', requestId: request.requestId, links: [{link: '%scriptUrl%?action=loadRequest&rid=' + request.rid, text: 'Status Check'}],images: [{name: 'logoBlob',key:'logo',url:'https://www.vippng.com/png/detail/1-13363_check-mark-png-icon-green-circle-check-mark.png'}]}",
+          "target": "@submitterEmail,@requestorEmail,@primaryContact"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "!=",
+          "question": "status",
+          "value": "Draft"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "chat",
+          "targetType": "spaces/AAAA52i73Iw",
+          "value": "{text:'I2I Support Ticket Request: ' + request.title + ' - has been submitted for review. <%scriptUrl%?action=loadRequest&rid=' + request.rid + '|View Request>'}",
+          "target": "spaces/AAAA52i73Iw"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "!=",
+          "question": "status",
+          "value": "Draft"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "email",
+          "targetType": "template.email.html",
+          "value": "{subject: 'I2I Support Ticket Request: ' + request.title + ' - has been submitted.',header: 'Please review the engagement request',message: 'The following engagement has been submitted for review.',options: [],request: legacyRequest,links: [{link: '%scriptUrl%?action=loadRequest&rid=' + request.rid,text: 'Status Check'}],images: [{name: 'logoBlob',key:'logo',url:'http://www.nlpitaly.it/wp-content/uploads/2018/01/domanda.png'}]}",
+          "target": "i2isupport@globalpay.com"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Disconnect from Rally"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": true,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": true,
+          "target": "rallyarchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "!=",
+          "question": "typeOfSupportTicket",
+          "value": "Disconnect from Rally"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "rallyarchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Disconnect from Changepoint"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": true,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": true,
+          "target": "cparchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "!=",
+          "question": "typeOfSupportTicket",
+          "value": "Disconnect from Changepoint"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "cparchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Update Claims"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "rallyarchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Chat/Email Notification"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "rallyarchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Cancel Request"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": true,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "rallyarchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Drive issue"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": true,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "rallyarchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Updates in Request ID"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": true,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "rallyarchived"
+        }
+      ]
+    },
+    {
+      "rules": [
+        {
+          "comparator": "=",
+          "question": "typeOfSupportTicket",
+          "value": "Others"
+        }
+      ],
+      "actions": [
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": false,
+          "target": "requestId"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "hidden",
+          "value": true,
+          "target": "rallyarchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "cparchived"
+        },
+        {
+          "verb": "update",
+          "targetType": "required",
+          "value": false,
+          "target": "rallyarchived"
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "hidden": false,
+      "max": 200,
+      "background": 1,
+      "inputs": [
+        {
+          "hidden": false,
+          "tooltipText": "",
+          "collapsed": true,
+          "icon": "",
+          "errorMessage": "",
+          "label": "Type Of Ticket",
+          "type": "dropdown",
+          "error": "Type Of Ticket is required.",
+          "required": true,
+          "showOnStatus": "Draft",
+          "identity": "typeOfSupportTicket",
+          "limit": 0,
+          "options": [
+            {
+              "icon": "object-group",
+              "label": "Disconnect from Rally",
+              "type": "option",
+              "value": "Disconnect from Rally"
+            },
+            {
+              "icon": "object-group",
+              "label": "Disconnect from Changepoint",
+              "type": "option",
+              "value": "Disconnect from Changepoint"
+            },
+            {
+              "icon": "object-group",
+              "label": "Update Claims",
+              "type": "option",
+              "value": "Update Claims"
+            },
+            {
+              "icon": "object-group",
+              "label": "Chat/Email Notification",
+              "type": "option",
+              "value": "Chat/Email Notification"
+            },
+            {
+              "icon": "object-group",
+              "label": "Cancel Request",
+              "type": "option",
+              "value": "Cancel Request"
+            },
+            {
+              "icon": "object-group",
+              "label": "Drive issue",
+              "type": "option",
+              "value": "Drive issue"
+            },
+            {
+              "icon": "object-group",
+              "label": "Updates in Request ID",
+              "type": "option",
+              "value": "Updates in Request ID"
+            },
+            {
+              "icon": "object-group",
+              "label": "Others",
+              "type": "option",
+              "value": "Others"
+            }
+          ],
+          "id": 1,
+          "text": "Please select the specific category of the Support Ticket being raised.",
+          "value": ""
+        },
+        {
+          "hidden": true,
+          "tooltipText": "",
+          "collapsed": true,
+          "errorMessage": "Please provide a valid Request ID",
+          "icon": "paragraph",
+          "label": "Request ID",
+          "type": "text",
+          "required": "",
+          "showOnStatus": "Draft",
+          "identity": "requestId",
+          "options": [],
+          "limit": 10,
+          "text": "Please provide existing Request ID (RID), for multiple RIDs, separate the RIDs with a comma while creating a support ticket.",
+          "id": 2,
+          "value": ""
+        },
+        {
+          "hidden": true,
+          "tooltipText": "",
+          "collapsed": true,
+          "errorMessage": "Please provide a valid Request ID",
+          "icon": "paragraph",
+          "label": "Dev Name",
+          "type": "text",
+          "required": "",
+          "showOnStatus": "Draft",
+          "identity": "requestId",
+          "options": [],
+          "limit": 10,
+          "text": "Please provide existing Request ID (RID), for multiple RIDs, separate the RIDs with a comma while creating a support ticket.",
+          "id": 2,
+          "value": ""
+        },
+        {
+          "hidden": true,
+          "tooltipText": "",
+          "collapsed": true,
+          "icon": "paragraph",
+          "errorMessage": "",
+          "label": "Is this Project archived at ChangePoint?",
+          "type": "checkinputbox",
+          "required": false,
+          "showOnStatus": "Draft",
+          "identity": "cparchived",
+          "options": [],
+          "limit": 10,
+          "id": 3,
+          "text": "Ticket raised to disconnect Request ID from ChangePoint.",
+          "value": ""
+        },
+        {
+          "hidden": true,
+          "tooltipText": "",
+          "collapsed": true,
+          "errorMessage": "",
+          "icon": "paragraph",
+          "label": "Is this Project archived at Rally?",
+          "type": "checkinputbox",
+          "required": false,
+          "showOnStatus": "Draft",
+          "identity": "rallyarchived",
+          "options": [],
+          "limit": 10,
+          "text": "Ticket raised to disconnect Request ID from Rally.",
+          "id": 4,
+          "value": ""
+        },
+        {
+          "hidden": false,
+          "tooltipText": "",
+          "collapsed": true,
+          "icon": "paragraph",
+          "errorMessage": "Please enter a summary for your engagement request.",
+          "label": "Summary",
+          "type": "richText",
+          "required": true,
+          "showOnStatus": "Draft",
+          "identity": "summary",
+          "options": [],
+          "limit": 10000,
+          "id": 3,
+          "text": "Please provide description of why this Ticket is being created.",
+          "value": "",
+          "responsesField": "summaryRichtext"
+        }
+      ],
+      "label": "Details",
+      "published": true
+    },
+    {
+      "hidden": false,
+      "max": 200,
+      "background": 3,
+      "inputs": [
+        {
+          "hidden": false,
+          "tooltipText": "",
+          "collapsed": true,
+          "icon": "paragraph",
+          "errorMessage": "",
+          "label": "Primary Contacts",
+          "type": "contact",
+          "required": true,
+          "valid": true,
+          "showOnStatus": "Draft",
+          "identity": "pointOfContact",
+          "options": [],
+          "limit": 200,
+          "text": "Provide the name of a contact (in addition to the requestor) that must be notified regarding this request.",
+          "id": 4,
+          "value": ""
+        },
+        {
+          "hidden": false,
+          "tooltipText": "",
+          "collapsed": true,
+          "icon": "paragraph",
+          "errorMessage": "",
+          "label": "Secondary Contacts",
+          "type": "contact",
+          "required": false,
+          "valid": true,
+          "showOnStatus": "Draft",
+          "identity": "secondaryPointOfContact",
+          "options": [],
+          "limit": 200,
+          "id": 5,
+          "text": "Provide the name of additional contacts that should be notified regarding this request.",
+          "value": ""
+        }
+      ],
+      "label": "Contacts",
+      "published": true
+    },
+    {
+      "hidden": false,
+      "max": 200,
+      "inputs": [
+        {
+          "hidden": false,
+          "tooltipText": "",
+          "collapsed": true,
+          "icon": "folder",
+          "errorMessage": "",
+          "label": "Upload to Drive",
+          "type": "upload",
+          "required": false,
+          "showOnStatus": "Draft",
+          "identity": "uploads",
+          "options": [],
+          "limit": 0,
+          "text": "",
+          "id": 6,
+          "value": "value"
+        },
+        {
+          "hidden": false,
+          "tooltipText": "",
+          "collapsed": true,
+          "icon": "folder",
+          "errorMessage": "",
+          "label": "Upload from system",
+          "type": "upload",
+          "required": false,
+          "showOnStatus": "Draft",
+          "identity": "uploads",
+          "options": [],
+          "limit": 0,
+          "text": "",
+          "id": 6,
+          "value": "value"
+        }
+      ],
+      "background": 7,
+      "published": true,
+      "label": "Uploads"
+    },
+    {
+      "hidden": false,
+      "max": 200,
+      "inputs": [
+        {
+          "hidden": true,
+          "tooltipText": "",
+          "collapsed": true,
+          "errorMessage": "Something wrong with duallist",
+          "icon": "paragraph",
+          "label": "Dev Team",
+          "type": "dualList",
+          "required": "",
+          "showOnStatus": "Draft",
+          "identity": "teamDualList",
+          "options": [],
+          "limit": 10,
+          "text": "Team dual list",
+          "id": 2,
+          "value": ""
+        }
+      ],
+      "background": 7,
+      "published": true,
+      "label": "Impacts"
+    }
+  ]
+}
